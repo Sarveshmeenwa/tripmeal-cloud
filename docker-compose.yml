@@ -1,3 +1,25 @@
 version: "3"
 
 # COMPLETE THIS FILE
+services:
+  web:
+    build: web
+    image: meenowasarvesh689/tripmeal-web:1.0
+    networks:
+      - backend
+    ports:
+      - 5000
+
+  db:
+    build: db
+    image: meenowasarvesh689/tripmeal-db:1.0
+    networks:
+      - backend
+    volumes:
+      - db-data:/var/lib/mysql/data
+
+networks:
+  backend:
+
+volumes:
+  db-data:
